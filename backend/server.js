@@ -1,43 +1,31 @@
 const express = require("express");
 const app = express();
-var port = normalizePort(process.env.PORT);
+var port = process.env.PORT;
 const { MongoClient } = require("mongodb");
 
-const url = URL;
-const client = new MongoClient(url);
+// Connection URI
+const uri = process.env.MONGODB_URI;
 
-function normalizePort(val) {
-  var port = parseInt(val, 10);
-  if (isNaN(port)) {
-    return val;
+// Create a new MongoClient
+const client = new MongoClient(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+async function run() {
+  try {
+    // Connect the client to the server
+    await client.connect();
+
+    // Establish and verify connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Connected successfully to server");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
   }
-  if (port >= 0) {
-    return port;
-  }
-  return false;
 }
-
-const dbName = "myProject";
-
-async function main() {
-  await client.connect();
-  console.log("Connected successfully to server");
-  const db = client.db(dbName);
-  const collection = db.collection("documents");
-
-  const findResult = await collection.find({}).toArray();
-  console.log("Found documents =>", findResult);
-
-  const deleteResult = await collection.deleteMany({ a: 3 });
-  console.log("Deleted documents =>", deleteResult);
-
-  return "done.";
-}
-
-main()
-  .then(console.log)
-  .catch(console.error)
-  .finally(() => client.close());
+run().catch(console.dir);
 
 app.listen(port, () => {
   console.log(`Écoute du server sur le port: ${port}`);
