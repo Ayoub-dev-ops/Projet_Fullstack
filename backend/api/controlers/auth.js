@@ -1,21 +1,6 @@
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
 const User = require("../../models/users/users");
 const authServices = require("../../services/auth");
-
-// Register a new user
-const register = async (req, res, next) => {
-  const { name, email, password } = req.body;
-
-  try {
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ name, email, password: hashedPassword });
-    await user.save();
-    res.json({ message: "Registration successful" });
-  } catch (error) {
-    next(error);
-  }
-};
 
 // Login with an existing user
 const login = async (req, res, next) => {
@@ -41,4 +26,4 @@ const login = async (req, res, next) => {
   }
 };
 
-module.exports = { register, login };
+module.exports = { login };
