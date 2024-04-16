@@ -20,6 +20,14 @@ Content-Type: application/json
 }
 
 ###
+DELETE http://localhost:3000/project/deleteProject
+Content-Type: application/json
+
+{
+    "title": "title2"
+}
+
+###
 POST http://localhost:3000/auth/login
 Content-Type: application/json
 

@@ -37,6 +37,24 @@ const createProject = async (
   }
 };
 
+const deleteProject = async (title) => {
+  try {
+    debug("Suppression du projet...");
+    const project = await Project.findOneAndDelete({ title: title });
+    if (project) {
+      debug("Projet supprimé avec succès !");
+      return true;
+    } else {
+      debug("Projet non trouvé !");
+      return false;
+    }
+  } catch (error) {
+    debug("Erreur lors de la suppression du projet :", error);
+    return false;
+  }
+};
+
 module.exports = {
   createProject,
+  deleteProject,
 };
