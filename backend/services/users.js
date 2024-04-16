@@ -1,22 +1,26 @@
 const User = require("../models/users/users");
-var debug = require("debug")("backend:services:users");
+const debug = require("debug")("backend:services:users");
 
-createUser = async function createUser(email, password) {
-  if (email == undefined || password == undefined) {
+// Fonction pour créer un utilisateur
+const createUser = async (email, password) => {
+  if (email === undefined || password === undefined) {
     return null;
   }
+
   const existingUser = await User.findOne({ email: email });
+
   if (existingUser) {
-    return "email already there !"; // Email already exists in the database
+    return "Email déjà utilisé !"; // L'email existe déjà dans la base de données
   }
+
   try {
-    console.log("creating user");
-    var user = new User({ email: email, password: password });
+    debug("Création de l'utilisateur...");
+    const user = new User({ email: email, password: password });
     await user.save();
-    console.log("user created");
+    debug("Utilisateur créé avec succès !");
     return user;
   } catch (error) {
-    debug(error);
+    debug("Erreur lors de la création de l'utilisateur :", error);
     return null;
   }
 };

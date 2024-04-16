@@ -6,3 +6,15 @@ Content-Type: application/json
     "email": "testuer@gma3.com",
     "password": "testpassword"
 }
+
+###
+POST http://localhost:3000/project/addProject
+Content-Type: application/json
+
+{
+    "title": "title",
+    "description": "description",
+    "period": "period",
+    "technologyUsed": "technologyUsed",
+    "thumbnail": "thumbnail"
+}

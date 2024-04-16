@@ -1,27 +1,38 @@
-const users = require("../../models/users");
-const userService = require("../../services/users");
+const userServices = require("../services/users");
+const debug = require("debug")("backend:controllers:auth");
 
-exports.getMe = (req, res, next) => {
-  var id = req.user._id;
-  users
-    .findOne({ _id: id })
-    .then((data) => {
-      if (data == null) {
-        return res.status(404).json({ message: "no user with that id" });
-      }
-      return res.status(200).json(data.front);
-    })
-    .catch((err) => {
-      if (err) return next(err);
-    });
+// Fonction de gestion de la route /index
+const index = (req, res) => {
+  res.status(200).json("Auth index");
 };
 
-exports.create = async (req, res) => {
-  var user = req.body;
+// Fonction de gestion de la création d'un utilisateur
+const addUser = async (req, res) => {
+  const { email, password } = req.body;
+
+  debug("Début de la création d'un utilisateur dans le contrôleur...");
+
   try {
-    var createdUser = await userService.createUser(user);
-    return res.status(201).json(createdUser.front);
-  } catch (err) {
-    return res.status(400).json({ message: err.message });
+    // Appel du service pour créer un nouvel utilisateur
+    const user = await userServices.createUser(email, password);
+
+    if (!user) {
+      // En cas d'échec de la création de l'utilisateur
+      return res
+        .status(400)
+        .send("Erreur lors de la création de l'utilisateur");
+    }
+
+    // Envoi de la réponse avec l'utilisateur créé
+    return res.status(200).json(user);
+  } catch (error) {
+    // Gestion des erreurs
+    debug(error);
+    return res.status(400).send(error.message);
   }
+};
+
+module.exports = {
+  index, // Fonction pour la route /index
+  addUser, // Fonction pour la création d'un utilisateur
 };
