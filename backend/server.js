@@ -1,32 +1,34 @@
 const express = require("express");
 const app = express();
-var port = process.env.PORT;
-const { MongoClient } = require("mongodb");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const http = require("http");
 
-// Connection URI
-const uri = process.env.MONGODB_URI;
+// Utilisez body-parser pour analyser les requêtes JSON
+app.use(bodyParser.json());
 
-// Create a new MongoClient
-const client = new MongoClient(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const port = process.env.PORT || 3000;
+const ip_Address = process.env.IP_Address;
 
-async function run() {
-  try {
-    // Connect the client to the server
-    await client.connect();
+// Connection à la base de données MongoDB avec Mongoose
+mongoose
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Connexion à la base de données est OK !");
+  })
+  .catch((error) => {
+    console.error("Erreur de connexion à la base de données :", error);
+  });
 
-    // Establish and verify connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Connected successfully to server");
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
-}
-run().catch(console.dir);
+const routerAuth = require("./api/routes/auth");
+app.use("/user", routerAuth); // Définissez les routes pour le module auth sur /user
 
-app.listen(port, () => {
-  console.log(`Écoute du server sur le port: ${port}`);
+// Créer le serveur HTTP avec http.createServer
+const server = http.createServer(app);
+
+server.listen(port, ip_Address, () => {
+  console.log(`Votre application écoute sur le port ${port}`);
 });
