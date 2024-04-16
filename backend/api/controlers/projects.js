@@ -1,9 +1,9 @@
-const projectServices = require("../services/projects");
-const debug = require("debug")("backend:controllers:auth");
+const projectServices = require("../../services/projects");
+const debug = require("debug")("backend:controllers:projects");
 
 // Fonction de gestion de la route /index
 const index = (req, res) => {
-  res.status(200).json("Auth index");
+  res.status(200).json("Project index");
 };
 
 // Fonction de gestion de la création d'un utilisateur

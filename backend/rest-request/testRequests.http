@@ -3,7 +3,7 @@ POST http://localhost:3000/user/addUser
 Content-Type: application/json
 
 {
-    "email": "testuer@gma3.com",
+    "email": "testuer@gma2.com",
     "password": "testpassword"
 }
 
@@ -12,7 +12,7 @@ POST http://localhost:3000/project/addProject
 Content-Type: application/json
 
 {
-    "title": "title",
+    "title": "title2",
     "description": "description",
     "period": "period",
     "technologyUsed": "technologyUsed",

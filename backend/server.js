@@ -23,9 +23,10 @@ mongoose
     console.error("Erreur de connexion à la base de données :", error);
   });
 
-const routerAuth = require("./api/routes/auth");
-app.use("/user", routerAuth); // Définissez les routes pour le module auth sur /user
-app.use("/project", routerAuth); // Définissez les routes pour le module auth sur /project
+const routerUser = require("./api/routes/users");
+const routerProject = require("./api/routes/projects");
+app.use("/user", routerUser); // Définissez les routes pour le module auth sur /user
+app.use("/project", routerProject); // Définissez les routes pour le module project sur /project
 
 // Créer le serveur HTTP avec http.createServer
 const server = http.createServer(app);
