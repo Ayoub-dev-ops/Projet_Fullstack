@@ -6,7 +6,7 @@ const index = (req, res) => {
   res.status(200).json("Project index");
 };
 
-// Fonction de gestion de la création d'un utilisateur
+// Fonction de gestion de la création d'un projet
 const addProject = async (req, res) => {
   const { title, description, period, technologyUsed, thumbnail } = req.body;
 

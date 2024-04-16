@@ -25,8 +25,10 @@ mongoose
 
 const routerUser = require("./api/routes/users");
 const routerProject = require("./api/routes/projects");
+const routerAuth = require("./api/routes/auth");
 app.use("/user", routerUser); // Définissez les routes pour le module auth sur /user
 app.use("/project", routerProject); // Définissez les routes pour le module project sur /project
+app.use("/auth", routerAuth); // Définissez les routes pour le module auth sur /auth
 
 // Créer le serveur HTTP avec http.createServer
 const server = http.createServer(app);
