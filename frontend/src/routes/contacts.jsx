@@ -12,20 +12,19 @@ const ProfilePage = () => {
             <p>Age: {age}</p>
             <p>Email: {email}</p>
             <p>Bio: {bio}</p>
-            <br />
             <h1>Contact me!</h1>
             <form action="mailto:yourname@example.com" method="post" encType="text/plain">
                 <label htmlFor="name">Name:</label>
-                <input type="text" id="name" name="name" />
+                <input type="text" id="name" name="name" required />
                 <br />
                 <label htmlFor="email">Email:</label>
-                <input type="email" id="email" name="email" />
+                <input type="email" id="email" name="email" required />
                 <br />
                 <label htmlFor="subject">Subject:</label>
-                <input type="text" id="subject" name="subject" />
+                <input type="text" id="subject" name="subject" required />
                 <br />
-                <label htmlFor="message">Message:</label>
-                <textarea id="message" name="message" rows="4" cols="50"></textarea>
+                <label htmlFor="message">Message:<br /></label>
+                <textarea id="message" name="message" rows="4" cols="50" required></textarea>
                 <br />
                 <input type="submit" value="Send" />
             </form>
