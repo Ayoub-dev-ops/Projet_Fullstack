@@ -1,6 +1,0 @@
-import React from "react";
-
-const BLogin = () => {
-  return <button className="btn btn-primary">Login</button>;
-};
-export default BLogin;
