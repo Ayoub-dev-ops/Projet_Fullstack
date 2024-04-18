@@ -12,7 +12,7 @@ POST http://localhost:3000/project/addProject
 Content-Type: application/json
 
 {
-    "title": "title2",
+    "title": "title3",
     "description": "description",
     "period": "period",
     "technologyUsed": "technologyUsed",
@@ -34,4 +34,21 @@ Content-Type: application/json
 {
     "email": "testuer@gma2.com",
     "password": "testpassword"
+}
+
+###
+GET http://localhost:3000/project/getProjects
+Authorization
+
+###
+PUT http://localhost:3000/project/updateProject
+Content-Type: application/json
+Authorization
+
+{
+    "title": "title",
+    "period": "period123",
+    "technologyUsed": "technologyUsed123",
+    "description": "description123",
+    "thumbnail": "thumbnail123"
 }

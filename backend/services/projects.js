@@ -4,10 +4,10 @@ const debug = require("debug")("backend:services:projects");
 // Fonction pour créer un projet
 const createProject = async (
   title,
-  thumbnail,
   description,
   period,
-  technologyUsed
+  technologyUsed,
+  thumbnail
 ) => {
   if (title === undefined || thumbnail === undefined) {
     return null;
@@ -23,10 +23,10 @@ const createProject = async (
     debug("Création du projet...");
     const project = new Project({
       title: title,
-      thumbnail: thumbnail,
       description: description,
       period: period,
       technologyUsed: technologyUsed,
+      thumbnail: thumbnail,
     });
     await project.save();
     debug("projet créé avec succès !");
@@ -53,8 +53,57 @@ const deleteProject = async (title) => {
     return false;
   }
 };
+const updateProject = async (
+  title,
+  description,
+  period,
+  technologyUsed,
+  thumbnail
+) => {
+  try {
+    debug("Mise à jour du projet...");
+    const project = await Project.findOneAndUpdate(
+      { title: title },
+      {
+        thumbnail: thumbnail,
+        description: description,
+        period: period,
+        technologyUsed: technologyUsed,
+      }
+    );
+    if (project) {
+      debug("Projet mis à jour avec succès !");
+      return true;
+    } else {
+      debug("Projet non trouvé !");
+      return false;
+    }
+  } catch (error) {
+    debug("Erreur lors de la mise à jour du projet :", error);
+    return false;
+  }
+};
+
+const getAllProjects = async () => {
+  try {
+    debug("Récupération de tous les projets...");
+    const projects = await Project.find();
+    if (projects) {
+      debug("Projets récupérés avec succès !");
+      return projects;
+    } else {
+      debug("Aucun projet trouvé !");
+      return null;
+    }
+  } catch (error) {
+    debug("Erreur lors de la récupération des projets :", error);
+    return null;
+  }
+};
 
 module.exports = {
   createProject,
   deleteProject,
+  updateProject,
+  getAllProjects,
 };
