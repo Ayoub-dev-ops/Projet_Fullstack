@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ChgmtProject from "../components/ProjectChange";
 
 const ProjectList = () => {
   const [projects, setProjects] = useState([]);
@@ -50,7 +49,6 @@ const ProjectList = () => {
                 Technologies utilisées :<br />
                 {project.technologyUsed}
               </li>
-              <ChgmtProject />
             </ul>
           </div>
         )

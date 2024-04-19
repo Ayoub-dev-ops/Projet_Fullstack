@@ -7,8 +7,7 @@ const managementPage = () => {
             <div>
                 <h1>Management</h1>
                 <p>Welcome to the management page!</p>
-                <h3><ButtonAdd/></h3>
-                <h3><ButtonBar/></h3>
+                <h3><ButtonAdd/><ButtonBar/></h3>
                 <br />
             </div>
         );
