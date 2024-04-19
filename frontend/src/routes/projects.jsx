@@ -1,19 +1,14 @@
-import { useEffect, useState } from "react";
+import ListProject from '../components/ProjectList';
+import ProjectAdd from "../components/ProjectAdd";
 
 const ProjectPage = () => {
-
-    const [message, setMessage] = useState("");
-        useEffect(() => {
-            fetch("http://localhost:3000/message")
-              .then((res) => res.json())
-              .then((data) => setMessage(data.message));
-          }, []);
 
     return (
         <div>
             <h1>Projects</h1>
             <p>Welcome to my project page!</p>
-            <h1>{message}</h1>
+            <ProjectAdd />
+            <h3><ListProject/></h3>
             <br />
         </div>
     );
