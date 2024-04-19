@@ -82,7 +82,3 @@ To run this application locally, follow these steps:
    ```
    http://localhost:5173
    ```
-
-```
-
-```
