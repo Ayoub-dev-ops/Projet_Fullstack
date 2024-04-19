@@ -1,11 +1,14 @@
 const express = require("express");
 const app = express();
+var cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const http = require("http");
 
 // Utilisez body-parser pour analyser les requêtes JSON
 app.use(bodyParser.json());
+
+app.use(cors());
 
 const port = process.env.PORT || 3000;
 const ip_Address = process.env.IP_Address;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form } from "react-router-dom";
 import axios from "axios";
 
-export function DeleteProject() {
+/*export function DeleteProject() {
   const [projects, setProject] = useState([]);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export function DeleteProject() {
 }
 
 export function UpdateProject() {
-  const [projects, setProject] = useState([]);
+  const [projects, setProjects] = useState([]);
 
   useEffect(() => {
     const updateProject = async () => {
@@ -30,6 +30,7 @@ export function UpdateProject() {
         const response = await axios.put(
           "http://localhost:3000/project/updateProject"
         );
+        console.log(`resp: ${response}`);
         setProject(response.data); // Mettre à jour le state avec les projets récupérés
       } catch (error) {
         console.error("Erreur lors de la récupération des projets:", error);
@@ -39,9 +40,18 @@ export function UpdateProject() {
     updateProject();
   }, []);
 }
+*/
 
 export default function ProjectChange() {
-  return (
+  const DeleteProject = () => {
+    console.log("Delete project");
+  };
+
+  const UpdateProject = () => {
+    console.log("Update project");
+  };
+
+  /*  return (
     <>
       <div>
         <Form action="edit">
@@ -52,6 +62,19 @@ export default function ProjectChange() {
             Delete
           </button>
         </Form>
+      </div>
+    </>
+  );*/
+
+  return (
+    <>
+      <div>
+        <button type="submit" onClick={UpdateProject}>
+          Edit
+        </button>
+        <button type="submit" onClick={DeleteProject}>
+          Delete
+        </button>
       </div>
     </>
   );

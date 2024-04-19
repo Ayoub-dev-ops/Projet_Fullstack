@@ -31,16 +31,28 @@ const ProjectList = () => {
           technologyUsed: [string];
           thumbnail: string;
         }) => (
-          <>
+          <div key={project._id}>
             <p>{project.title}</p>
             <ul key={project._id}>
-              <li>{project.description}</li>
-              <li>{project.period}</li>
-              <li>{project.technologyUsed}</li>
-              <li>{project.thumbnail}</li>
+              <li>
+                Miniature :<br />
+                {project.thumbnail}
+              </li>
+              <li>
+                Description :<br />
+                {project.description}
+              </li>
+              <li>
+                Période du projet :<br />
+                {project.period}
+              </li>
+              <li>
+                Technologies utilisées :<br />
+                {project.technologyUsed}
+              </li>
               <ChgmtProject />
             </ul>
-          </>
+          </div>
         )
       )}
     </div>

@@ -4,7 +4,7 @@ import emailjs from 'emailjs-com';
 const ProfilePage = () => {
     const name = "Ayoub ERROUICHAQ";
     const age = 22;
-    const email = "yourname@example.com";
+    const email = "polomalgax@example.com";
     const bio = "I'm a cool guy!";
     
     const [formData, setFormData] = useState({
@@ -25,7 +25,6 @@ const ProfilePage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Remplacez les valeurs ci-dessous par vos propres identifiants EmailJS
         const serviceID = import.meta.env.SERVICE_ID;
         const templateID = import.meta.env.TEMPLATE_ID;
         const userID = import.meta.env.USER_ID;

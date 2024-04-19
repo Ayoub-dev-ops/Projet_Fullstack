@@ -1,6 +1,6 @@
 const CareerPage = () => {
-    const name = "Career Name";
-    const bio = "Write a short bio about yourself.";
+    const name = "Career Page";
+    const bio = "This is the career page of my portfolio.";
 
     return (
         <div>
@@ -8,6 +8,7 @@ const CareerPage = () => {
             <p>Welcome to my career page!</p>
             <h2>{name}</h2>
             <p>Bio: {bio}</p>
+            <iframe src="../public/Profile.pdf" width="100%" height="500px"></iframe>
             <br />
         </div>
     );

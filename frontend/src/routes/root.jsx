@@ -5,7 +5,7 @@ export default function Root() {
       <>
         <div id="sidebar">
           <div>
-            <h2>Welcome to my portfolio page!</h2>
+            <h2>Bienvenu sur mon portfolio!</h2>
           </div>
           <nav>
             <ul>
