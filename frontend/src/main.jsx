@@ -10,6 +10,8 @@ import Contact from "./routes/contacts";
 import Career from "./routes/career";
 import Project from "./routes/projects";
 import Login from "./routes/login";
+import Management from "./routes/management"
+import Analytics from "./routes/analytics"
 import './index.css'
 
 const router = createBrowserRouter([
@@ -33,6 +35,14 @@ const router = createBrowserRouter([
       {
         path: "/pages/4",
         element: <Login />,
+      },
+      {
+        path: "/pages/5",
+        element: <Management />,
+      },
+      {
+        path: "/pages/6",
+        element: <Analytics />,
       },
     ],
   },

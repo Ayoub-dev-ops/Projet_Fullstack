@@ -21,6 +21,12 @@ export default function Root() {
               <li>
                 <a href={`/pages/4`}>Login</a>
               </li>
+              <li>
+                <a href={`/pages/5`}>Project Management</a>
+              </li>
+              <li>
+                <a href={`/pages/6`}>Analytics</a>
+              </li>
             </ul>
           </nav>
         </div>

@@ -23,11 +23,9 @@ export default function AddProject() {
   return (
     <>
       <div>
-        <Form action="edit">
-          <button type="submit" onClick={AddProject}>
-            Add
-          </button>
-        </Form>
+        <button type="submit" onClick={AddProject}>
+          Add
+        </button>
       </div>
     </>
   );
